@@ -34,9 +34,8 @@ async def main():
     with torch.no_grad():
         outputs = model(**inputs)
         logits = outputs.logits
-        print(outputs.logits)
         
-    predicted_class_id = torch.argmax(logits, dim=1).item()
+    predicted_class_id = torch.argmax(logits, dim=1)
 
     id2label = {
         0: "やる気が出ない",

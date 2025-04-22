@@ -25,7 +25,10 @@ def main():
     tokenizer = BertTokenizer.from_pretrained("Nishi18/TFC_model")
     model = BertForSequenceClassification.from_pretrained("Nishi18/TFC_model")
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = model.to(device)
     model.eval()
+
 
     user_input = st.text_input("あなたの悩みをどうぞ")
 
@@ -33,9 +36,10 @@ def main():
 
     with torch.no_grad():
         outputs = model(**inputs)
-        logits = outputs.logits
-        
-    predicted_class_id = torch.argmax(logits, dim=1).cpu().item()
+        logits = outputs.logits.to(device)
+
+    logits = logits.cpu()
+    predicted_class_id = torch.argmax(logits, dim=1).item()
     
     id2label = {
         0: "やる気が出ない",

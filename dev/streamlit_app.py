@@ -20,7 +20,7 @@ def predict(text):
 
 model_name = "Nishi18/TFC_model"
 tokenizer = BertTokenizer.from_pretrained(model_name)
-model = BertForSequenceClassification.from_pretrained(model_name)
+model = BertForSequenceClassification.from_pretrained(model_name, trust_remote_code=True)
 
 model.eval()
 
@@ -31,7 +31,8 @@ inputs = tokenizer(user_input, return_tensors="pt", padding=True, truncation=Tru
 with torch.no_grad():
     outputs = model(**inputs)
     logits = outputs.logits
-
+    print(logits)
+    print(logits.shape)
 predicted_class_id = torch.argmax(logits, dim=1).item()
 
 id2label = {

@@ -13,6 +13,7 @@ df["ジャンル"] = df["ジャンル"].str.strip()
 df["口調レベル"] = df["口調レベル"].str.strip()
 
 
+async def main():
 
     def predict(text):
         inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)

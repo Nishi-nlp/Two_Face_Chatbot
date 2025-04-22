@@ -36,7 +36,8 @@ async def main():
         logits = outputs.logits
         
     predicted_class_id = torch.argmax(logits, dim=1)
-
+    print(type(predicted_class_id))
+    
     id2label = {
         0: "やる気が出ない",
         1: "将来が不安",

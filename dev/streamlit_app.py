@@ -5,7 +5,7 @@ from transformers import BertTokenizer, BertForSequenceClassification, Trainer, 
 from datasets import load_dataset, Dataset
 import torch
 
-file_path = "Two_Face_Chatbot.csv"
+file_path = "dev/Two_Face_Chatbot.csv"
 df = pd.read_csv(file_path)
 
 df["ジャンル"] = df["ジャンル"].str.strip()

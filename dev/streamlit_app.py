@@ -18,8 +18,8 @@ def predict(text):
     pred = torch.argmax(logits, dim=1).item()
     return pred
 
-tokenizer = BertTokenizer.from_pretrained("./TFC_model")
-model = BertForSequenceClassification.from_pretrained("./TFC_model")
+tokenizer = BertTokenizer.from_pretrained("dev/TFC_model")
+model = BertForSequenceClassification.from_pretrained("dev/TFC_model")
 
 model.eval()
 

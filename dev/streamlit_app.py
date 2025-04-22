@@ -13,7 +13,7 @@ df["ジャンル"] = df["ジャンル"].str.strip()
 df["口調レベル"] = df["口調レベル"].str.strip()
 
 
-async def main():
+def main():
 
     def predict(text):
         inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
@@ -74,5 +74,4 @@ async def main():
         st.write(f"Bot:{response}")
 
 
-if __name__ == "__main__":
-    asyncio.run(main())
+main()

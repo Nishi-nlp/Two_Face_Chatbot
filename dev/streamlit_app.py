@@ -6,14 +6,14 @@ from datasets import load_dataset, Dataset
 import torch
 import asyncio
 
-file_path = "Two_Face_Chatbot.csv"
+file_path = "dev/Two_Face_Chatbot.csv"
 df = pd.read_csv(file_path)
 
 df["ジャンル"] = df["ジャンル"].str.strip()
 df["口調レベル"] = df["口調レベル"].str.strip()
 
 
-async def main():
+
     def predict(text):
         inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
         with torch.no_grad():
